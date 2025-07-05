@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Network Scan Report</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 2em; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1em; }
+    th, td { border: 1px solid #666; padding: 8px; text-align: left; }
+    th { background: #ddd; }
+  </style>
+</head>
+<body>
+  <h1>Network Scan Report</h1>
+  <p><strong>Scan Time:</strong> {{ scan_time }}</p>
+  <table>
+    <tr>
+      <th>IP Address</th>
+      <th>MAC Address</th>
+      <th>OS Hint</th>
+      <th>Open Ports</th>
+    </tr>
+    {% for h in hosts %}
+    <tr>
+      <td>{{ h.ip }}</td>
+      <td>{{ h.mac }}</td>
+      <td>{{ h.os_hint }}</td>
+      <td>{{ h.open_ports | join(", ") }}</td>
+    </tr>
+    {% endfor %}
+  </table>
+</body>
+</html>
